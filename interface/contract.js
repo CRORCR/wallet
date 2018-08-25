@@ -78,6 +78,24 @@ class DepositContract extends IContract
     }
 }
 
+class MinerDepositContract extends IContract
+{
+    constructor()
+    {
+        super();
+        this.setTokenAddress(depositAddress);
+        this.setAbi(matrixAbi);
+        this.setFunc('minerDeposit');
+    }
+    getData(nodeID)
+    {
+        let funcInterface = this.getFuncInterface();
+        if(funcInterface)
+        {
+            return funcInterface.getData(nodeID);
+        }
+    }
+}
 class WithdrawContract extends IContract
 {
     constructor()
@@ -178,3 +196,4 @@ exports.stampContract = stampContract;
 exports.DepositContract = DepositContract;
 exports.WithdrawContract = WithdrawContract;
 exports.RefundContract = RefundContract;
+exports.MinerDepositContract = MinerDepositContract;
