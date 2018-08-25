@@ -4,7 +4,6 @@ const config = {
     gasPrice : 2,
     RingSignMixNum : 6,
     ipcPath : "/lcq/BlockChanGeth/chaindata/geth.ipc",
-
 };
 
 module.exports = config;
