@@ -2,24 +2,20 @@ let web3 = require('../web3/initweb3.js');
 const fs = require('fs');
 let config = require('../config.js');
 let ASyncLoopStack = require('./ASyncLoopStack.js');
-let sendList = JSON.parse(fs.readFileSync('./sendList.json'));
+let sendList = JSON.parse(fs.readFileSync('../context/sendList/sendList.json'));
 
-if(fs.existsSync('./deposit.json')){
-    let deposit_send = JSON.parse(fs.readFileSync('./deposit.json'));
-    if(deposit_send && deposit_send.deposit)
+if(fs.existsSync('../context/sendList/sendList.json')){
+    let normal_send = JSON.parse(fs.readFileSync('../context/sendList/sendList.json'));
+    if(normal_send && normal_send.normal)
     {
-        sendList.deposit = deposit_send.deposit;
-    }
-}
-if(fs.existsSync('./sendList_refund.json')) {
-    let sendList_refund = JSON.parse(fs.readFileSync('./sendList_refund.json'));
-    if (sendList_refund && sendList_refund.refund) {
-        sendList.refund = sendList_refund.refund;
+        sendList.normal = normal_send.normal;
     }
 }
 
-let matrixUtil = require('matrix-util');
-web3.matrix = new matrixUtil.web3Wan(web3);
+
+
+let manUtil = require('manchain-util');
+web3.man = new manUtil.web3Man(web3);
 web3.eth.getTransactionCount(sendList.from,function (err,result) {
     if(!err)
     {
@@ -27,7 +23,7 @@ web3.eth.getTransactionCount(sendList.from,function (err,result) {
         sendList.nonce = result;
         let OTALoop = new ASyncLoopStack(1);
         OTALoop.EndFunc = function () {
-            fs.writeFileSync('./sendListWithNonce.json',JSON.stringify(sendList,null,4),"utf8");
+            fs.writeFileSync('../context/sendList/withNonce.json',JSON.stringify(sendList,null,4),"utf8");
             process.exit();
         }
         OTALoop.run();
