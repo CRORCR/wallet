@@ -1,7 +1,7 @@
 const config = {
     version: '1.0.0',
     keyStorePath : '/lcq/BlockChanGeth/chaindata/keystore/',
-    gasPrice : 2, //GWei
+    gasPrice : 2,
     RingSignMixNum : 6,
     ipcPath : "/lcq/BlockChanGeth/chaindata/geth.ipc",
 
