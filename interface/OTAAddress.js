@@ -1,4 +1,4 @@
-let matrixUtil = require('matrix-util');
+let manUtil = require('manchain-util');
 let keyStore = require("../Accounts/keyStore.js");
 const secp256k1 = require('secp256k1');
 class IOTAAddress{
@@ -11,12 +11,12 @@ class IOTAAddress{
     getOTAPrivateKey(privateKey)
     {
         if (privateKey.AKey) {
-            this.privateKey = matrixUtil.computeWaddrPrivateKey(this.waddress, privateKey.AKey, privateKey.BKey);
+            this.privateKey = manUtil.computeWaddrPrivateKey(this.waddress, privateKey.AKey, privateKey.BKey);
         }
     }
     getPublicKey()
     {
-        return matrixUtil.recoverPubkeyFromWaddress(this.waddress);
+        return manUtil.recoverPubkeyFromWaddress(this.waddress);
     }
     generateRingSign(message,otaSet)
     {
@@ -27,7 +27,7 @@ class IOTAAddress{
             otaSetBuf.push(rpcu);
         }
         let publicKey = this.getPublicKey().A;
-        let ringArgs = matrixUtil.getRingSign(message, this.privateKey, publicKey, otaSetBuf);
+        let ringArgs = manUtil.getRingSign(message, this.privateKey, publicKey, otaSetBuf);
         let KIWQ = this.generatePubkeyIWQforRing(ringArgs.PubKeys, ringArgs.I, ringArgs.w, ringArgs.q);
         return KIWQ;
     }
@@ -57,7 +57,7 @@ class IOTAAddress{
 class CreateOTAAddress extends IOTAAddress{
     constructor(waddress) {
         super();
-        this.waddress = matrixUtil.generateOTAWaddress(waddress).toLowerCase();
+        this.waddress = manUtil.generateOTAWaddress(waddress).toLowerCase();
     }
 }
 class ownOTAAddress extends IOTAAddress{
@@ -78,7 +78,7 @@ class ownCreateOTAAddress extends ownOTAAddress
     {
         super();
         let waddress = keyStore.getWAddress(address);
-        this.waddress = matrixUtil.generateOTAWaddress(waddress).toLowerCase();
+        this.waddress = manUtil.generateOTAWaddress(waddress).toLowerCase();
     }
 }
 

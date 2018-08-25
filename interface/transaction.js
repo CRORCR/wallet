@@ -1,9 +1,10 @@
 const errMsg = require("./ErrorMessage.js");
 let GWeiAmount = require("./Amount.js").GWeiAmount;
 let keyStore = require("../Accounts/keyStore.js");
-let matrixUtil = require('matrix-util');
+let manUtil = require('manchain-util');
 let depositContract = require("../interface/contract.js").DepositContract;
 let Tx = require('ethereumjs-tx');
+//var Tx = manUtil.manchainTx;
 let config = require('../config.js');
 let gasPrice = new GWeiAmount(config.gasPrice);
 class ITrans {
@@ -66,7 +67,7 @@ class ITrans {
                 return true;
             if(/^0x[0-9A-F]{40}$/.test(address))
                 return true;
-            return matrixUtil.toChecksumAddress(address) == address;
+            return manUtil.toChecksumAddress(address) == address;
         }
         else
         {
