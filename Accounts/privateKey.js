@@ -1,5 +1,5 @@
 let keyStore = require("./keyStore.js");
-let matrixUtil = require('matrix-util');
+let manUtil = require('manchain-util');
 module.exports = class privateKey{
     constructor(address,password)
     {
@@ -17,7 +17,7 @@ module.exports = class privateKey{
     }
     getOTAPrivateKey(OTAAddress) {
         if (this.AKey) {
-            return matrixUtil.computeWaddrPrivateKey(OTAAddress, this.AKey, this.BKey);
+            return manUtil.computeWaddrPrivateKey(OTAAddress, this.AKey, this.BKey);
         }
     }
 }

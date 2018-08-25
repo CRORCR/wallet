@@ -1,6 +1,6 @@
 const fs = require('fs');
 var keythereum = require("keythereum");
-let matrixUtil = require('matrix-util');
+let manUtil = require('manchain-util');
 let config = require('../config.js');
 const keyStore = {
     getWAddress(address) {
@@ -58,7 +58,7 @@ const keyStore = {
             privKeyA = keythereum.recover(password, keyAObj);
 //            privKeyB = keythereum.recover(password, keyBObj);
         }catch(error){
-            console.log('matrix_refundCoin', 'wrong password');
+            console.log('man_refundCoin', 'wrong password');
             return null;
         }
         return [privKeyA];
@@ -66,7 +66,7 @@ const keyStore = {
     getOTAPrivateKey(address,password,OTAAddress) {
         let privKey = keyStore.getPrivateKey(address, password);
 //        if (privKey) {
-//            return matrixUtil.computeWaddrPrivateKey(OTAAddress, privKey[0], privKey[1]);
+//            return manUtil.computeWaddrPrivateKey(OTAAddress, privKey[0], privKey[1]);
  //       }
     }
 };
