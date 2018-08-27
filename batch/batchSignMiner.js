@@ -1,10 +1,8 @@
 const fs = require('fs');
 let sendList = JSON.parse(fs.readFileSync('../context/miner/withNonce.json'));
 
-let normalTrans = require('../interface/transaction.js').NormalSend;
+let minerDepositSend = require('../interface/transaction.js').MinerDepositSend;
 let privateKey = require('../Accounts/privateKey.js');
-let refundOTASend = require('../transactions/refundOTASend.js');
-let minerDepositSend = require('../transactions/minerDeposit.js');
 let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
 let dataArray = [];
@@ -19,6 +17,7 @@ if(fromKey.AKey)
         {
             let item =sendList.deposit[i];
             let newSend = new minerDepositSend(sendList.from,item.to,item.nodeID,new CoinAmount(item.amount),nonce);
+            console.log(newSend);
             let data = newSend.sign(fromKey.AKey);
             dataArray.push(data);
         }

@@ -125,6 +125,29 @@ class NormalSend extends IRawTransaction
     }
 };
 
+class ValiDepositSend extends IRawTransaction
+{
+    constructor(from,to,node,amount,nonce)
+    {
+        super();
+        this.trans.setFrom(from);
+        this.trans.setTo(to);
+        this.trans.setValue(amount.getWei());
+        this.trans.nonce = nonce;
+    }
+};
+
+class MinerDepositSend extends IRawTransaction
+{
+    constructor(from,to,node,amount,nonce)
+    {
+        super();
+        this.trans.setFrom(from);
+        this.trans.setTo(to);
+        this.trans.setValue(amount.getWei());
+        this.trans.nonce = nonce;
+    }
+};
 class TokenSend extends IRawTransaction
 {
     constructor(from,to,nonce)
@@ -138,3 +161,5 @@ class TokenSend extends IRawTransaction
 };
 exports.NormalSend = NormalSend;
 exports.TokenSend = TokenSend;
+exports.ValiDepositSend = ValiDepositSend;
+exports.MinerDepositSend = MinerDepositSend;

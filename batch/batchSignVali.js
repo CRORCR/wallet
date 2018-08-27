@@ -1,10 +1,8 @@
 const fs = require('fs');
 let sendList = JSON.parse(fs.readFileSync('../context/vali/withNonce.json'));
 
-let normalTrans = require('../interface/transaction.js').NormalSend;
+let valiDepositSend = require('../interface/transaction.js').ValiDepositSend;
 let privateKey = require('../Accounts/privateKey.js');
-let refundOTASend = require('../transactions/refundOTASend.js');
-let valiDepositSend = require('../transactions/valiDeposit.js');
 let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
 let dataArray = [];
