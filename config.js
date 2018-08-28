@@ -10,6 +10,7 @@ module.exports = config;
 
 /*
 linux配置
+
     keyStorePath : '/lcq/BlockChanGeth/chaindata/keystore/',
     ipcPath : "/lcq/BlockChanGeth/chaindata/geth.ipc",
 

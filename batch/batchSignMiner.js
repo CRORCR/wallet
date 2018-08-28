@@ -1,7 +1,7 @@
 const fs = require('fs');
 let sendList = JSON.parse(fs.readFileSync('../context/miner/withNonce.json'));
 
-let minerDepositSend = require('../interface/transaction.js').MinerDepositSend;
+let minerDepositSend = require('../transactions/minerDeposit.js');
 let privateKey = require('../Accounts/privateKey.js');
 let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
