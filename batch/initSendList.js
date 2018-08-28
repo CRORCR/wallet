@@ -12,8 +12,6 @@ if(fs.existsSync('../context/sendList/sendList.json')){
     }
 }
 
-
-
 let manUtil = require('manchain-util');
 web3.man = new manUtil.web3Man(web3);
 web3.eth.getTransactionCount(sendList.from,function (err,result) {
