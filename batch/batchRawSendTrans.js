@@ -1,14 +1,20 @@
 const fs = require('fs');
 let web3 = require('../web3/initweb3.js');
 let ASyncLoopStack = require('./ASyncLoopStack.js');
-// let transArray = JSON.parse(fs.readFileSync('../context/sendList/signTx.json'));
+let transArray = JSON.parse(fs.readFileSync('../context/sendList/signTx.json'));
 // let transArray = JSON.parse(fs.readFileSync('../context/vali/signTx.json'));
- let transArray = JSON.parse(fs.readFileSync('../context/miner/signTx.json'));
+// let transArray = JSON.parse(fs.readFileSync('../context/miner/signTx.json'));
 // let transArray = JSON.parse(fs.readFileSync('../context/withdraw/signTx.json'));
 // let transArray = JSON.parse(fs.readFileSync('../context/refund/signTx.json'));
 let transLoop = new ASyncLoopStack(1);
-transLoop.Array = transArray;
 let tranHashArray = [];
+
+transLoop.Array = transArray;
+/*let start=0
+let end=1000
+for (var i=start;i<end;i++){
+    transLoop.Array.push(transArray[i])
+}*/
 transLoop.EachFunc = function (param,item,index) {
     web3.eth.sendRawTransaction(item,function (err,result) {
         if(!err)
