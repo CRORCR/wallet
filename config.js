@@ -1,12 +1,13 @@
 const config = {
-    version: '1.0.0',
-    keyStorePath : 'D:/BlockChanGeth/chaindata/keystore/',
-    gasPrice : 2,
+    version: '3.0.0',
+    keyStorePath : 'G:\\BlockChanGeth\\chaindata\\keystore\\',
+    gasPrice : 18,
     RingSignMixNum : 6,
     ipcPath : "\\\\.\\pipe\\geth.ipc",
 };
 
 module.exports = config;
+
 
 /*
 linux配置
