@@ -1,6 +1,6 @@
 const fs = require('fs');
 let sendList = JSON.parse(fs.readFileSync('./sendList.json'));
-let lengthArray=10
+let lengthArray=1
 // let dataArray = [];
 if(fs.existsSync('./sendList.json')){
     let normal_send = JSON.parse(fs.readFileSync('./sendList.json'));

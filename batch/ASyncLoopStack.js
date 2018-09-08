@@ -16,13 +16,13 @@ module.exports = class ASyncLoopStack
     {
         ++this.sucess;
     }
-    isArrayLength()
-    {
-        if(this.range)
-            return this.range[1] - this.range[0];
-        else
-            return this.Array.length;
-    }
+    // isArrayLength()
+    // {
+    //     if(this.range)
+    //         return this.range[1] - this.range[0];
+    //     else
+    //         return this.Array.length;
+    // }
     isInRange(iter)
     {
         if(this.range)
