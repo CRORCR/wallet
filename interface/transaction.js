@@ -1,12 +1,13 @@
 const errMsg = require("./ErrorMessage.js");
 let GWeiAmount = require("./Amount.js").GWeiAmount;
 let keyStore = require("../Accounts/keyStore.js");
-let manUtil = require('manchain-util');
+let manUtil = require('matrix-util');
 let depositContract = require("../interface/contract.js").DepositContract;
 let Tx = require('ethereumjs-tx');
-//var Tx = manUtil.manchainTx;
 let config = require('../config.js');
 let gasPrice = new GWeiAmount(config.gasPrice);
+
+
 class ITrans {
     constructor()
     {
@@ -125,29 +126,6 @@ class NormalSend extends IRawTransaction
     }
 };
 
-class ValiDepositSend extends IRawTransaction
-{
-    constructor(from,to,node,amount,nonce)
-    {
-        super();
-        this.trans.setFrom(from);
-        this.trans.setTo(to);
-        this.trans.setValue(amount.getWei());
-        this.trans.nonce = nonce;
-    }
-};
-
-class MinerDepositSend extends IRawTransaction
-{
-    constructor(from,to,node,amount,nonce)
-    {
-        super();
-        this.trans.setFrom(from);
-        this.trans.setTo(to);
-        this.trans.setValue(amount.getWei());
-        this.trans.nonce = nonce;
-    }
-};
 class TokenSend extends IRawTransaction
 {
     constructor(from,to,nonce)
@@ -161,5 +139,3 @@ class TokenSend extends IRawTransaction
 };
 exports.NormalSend = NormalSend;
 exports.TokenSend = TokenSend;
-exports.ValiDepositSend = ValiDepositSend;
-exports.MinerDepositSend = MinerDepositSend;
