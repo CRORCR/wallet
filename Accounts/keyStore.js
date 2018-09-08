@@ -1,6 +1,6 @@
 const fs = require('fs');
 var keythereum = require("keythereum");
-let manUtil = require('manchain-util');
+//let manUtil = require('matrix-util');
 let config = require('../config.js');
 const keyStore = {
     getWAddress(address) {
@@ -50,10 +50,10 @@ const keyStore = {
     },
     getPrivateKey(address,password){
         let keystore = this.getKeystoreJSON(address);
-        let keyBObj = {version:keystore.version, crypto:keystore.crypto2};
+//        let keyBObj = {version:keystore.version, crypto:keystore.crypto2};
         let keyAObj = {version:keystore.version, crypto:keystore.crypto};
         let privKeyA;
-        let privKeyB;
+//        let privKeyB;
         try {
             privKeyA = keythereum.recover(password, keyAObj);
 //            privKeyB = keythereum.recover(password, keyBObj);
@@ -63,11 +63,11 @@ const keyStore = {
         }
         return [privKeyA];
     },
-    getOTAPrivateKey(address,password,OTAAddress) {
-        let privKey = keyStore.getPrivateKey(address, password);
+//    getOTAPrivateKey(address,password,OTAAddress) {
+ //       let privKey = keyStore.getPrivateKey(address, password);
 //        if (privKey) {
 //            return manUtil.computeWaddrPrivateKey(OTAAddress, privKey[0], privKey[1]);
  //       }
-    }
+  //  }
 };
 module.exports = keyStore;
