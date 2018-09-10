@@ -3,14 +3,18 @@
     "normal": [
         {
             "to": "0x3d58945d36fc347ce3cda81a59f7e6fbcc4a615d",
-            "amount": 10000,
+            "amount": 1,
             "extra_to": [
                 {
                     "to": "0xf4c6437bf537396ec5296a962dd3844cdd75aa02",
-                    "value": 10000
+                    "value": 1
+                },
+                {
+                    "to": "0x6a987b5c6dd6099efd90d5b942e68958852d02fb",
+                    "value": 1
                 }
             ]
         }
     ],
-    "nonce": 4503599627370497
+    "nonce": 4503599627370496
 }

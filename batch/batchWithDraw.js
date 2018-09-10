@@ -5,7 +5,8 @@ let withdrawDeposit = require('../transactions/withdrawDeposit.js');
 let refundDeposit = require('../transactions/refundDeposit.js');
 let nonce = withdrawOrRefundList.nonce;
 let dataArray = [];
-let password = '1111111111';
+let config = require('../config.js');
+let password = config.password;
 let fromKey = new privateKey(withdrawOrRefundList.from,password);
 
 

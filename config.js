@@ -4,6 +4,7 @@ const config = {
     gasPrice : 18,
     RingSignMixNum : 6,
     ipcPath : "\\\\.\\pipe\\geth.ipc",
+    password:'1111111111',
 };
 
 module.exports = config;

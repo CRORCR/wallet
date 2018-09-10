@@ -10,12 +10,11 @@ let privateKey = require('../Accounts/privateKey.js');
 let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
 let dataArray = [];
-let password = '1111111111';
-let fromKey = new privateKey(sendList.from, password);
 let normalTrans = require('../interface/transaction.js').NormalSend;
 let GWeiAmount = require("../interface/Amount.js").GWeiAmount;
 let config = require('../config.js');
-
+let password = config.password;
+let fromKey = new privateKey(sendList.from, password);
 let gasPrice = new GWeiAmount(config.gasPrice);
 
 function extracted(item) {
@@ -60,7 +59,7 @@ if (fromKey.AKey) {
         for (var i = 0; i < sendList.normal.length; i++, nonce++) {
             let item = sendList.normal[i];
             let newSend = new normalTrans(sendList.from, item.to, new CoinAmount(item.amount), nonce);
-            console.log("sends:", newSend);
+            // console.log("sends:", newSend);
             let data = newSend.sign(fromKey.AKey);
             dataArray.push(data);
         }

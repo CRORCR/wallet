@@ -1,12 +1,12 @@
 const fs = require('fs');
 let sendList = JSON.parse(fs.readFileSync('../context/deposit/withNonce.json'));
-
+let config = require('../config.js');
 let privateKey = require('../Accounts/privateKey.js');
 let minerDepositSend = require('../transactions/minerDeposit.js');
 let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
 let dataArray = [];
-let password = '1111111111';
+let password = config.password;
 let fromKey = new privateKey(sendList.from,password);
 
 if(fromKey.AKey)

@@ -4,6 +4,10 @@
         {
             "to": "0x3d58945d36fc347ce3cda81a59f7e6fbcc4a615d",
             "amount": 1
+        },
+        {
+            "to": "0x6a987b5c6dd6099efd90d5b942e68958852d02fb",
+            "amount": 1
         }
     ]
 }
