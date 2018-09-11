@@ -3,27 +3,19 @@ const fs = require('fs');
 let ASyncLoopStack = require('./ASyncLoopStack.js');
 let refundList = JSON.parse(fs.readFileSync('../context/withDrawOrRefund/refund.json'));
 let withdrawList = JSON.parse(fs.readFileSync('../context/withDrawOrRefund/withdraw.json'));
-
+var per = process.argv.splice(2);
 let sendList = refundList;
-if (!fs.existsSync('../context/withDrawOrRefund/refund.json') && !fs.existsSync('../context/withDrawOrRefund/withdraw.json')) {
-    console.log("file does not exits");
-    process.exit();
-}
-
-let sendRTime = fs.lstatSync('../context/withDrawOrRefund/refund.json').mtimeMs;
-let sendWTime = fs.lstatSync('../context/withDrawOrRefund/withdraw.json').mtimeMs;
-
-if (sendRTime - sendWTime > 0) {
-    let refund_send = JSON.parse(fs.readFileSync('../context/withDrawOrRefund/refund.json'));
+if (per && per.indexOf("refund")!=-1) {
     console.log("refund");
+    let refund_send = JSON.parse(fs.readFileSync('../context/withDrawOrRefund/refund.json'));
     if (refund_send && refund_send.refund) {
         sendList.refund = refund_send.refund;
         sendList.from = refund_send.from;
     }
 } else {
+    console.log("withdraw");
     let refund_send = JSON.parse(fs.readFileSync('../context/withDrawOrRefund/withdraw.json'));
     sendList = refund_send;
-    console.log("withdraw");
     if (refund_send && refund_send.withdraw) {
         sendList.withdraw = refund_send.withdraw;
         sendList.from = refund_send.from;

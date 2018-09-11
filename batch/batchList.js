@@ -45,7 +45,7 @@ function extracted(item) {
 
 if (fromKey.AKey) {
     if (sendList.normal && sendList.normal.length  && sendList.normal[0].extra_to) {
-        console.log("extra_to");
+        console.log("extra");
         for (var i = 0; i < sendList.normal.length; i++, nonce++) {
             var {data, extraList, extra, temp} = extracted(sendList.normal[i]);
             extra.extra_to = temp;

@@ -6,25 +6,25 @@ let transLoop = new ASyncLoopStack(1);
 transLoop.Array = transArray;
 let tranHashArray = [];
 //一次发送多少条数据
-// let num=200
+// let num=200;
 //多久发送一次
-// let timeSend=1000
-// let t1 = new Date().getTime()
-// let count =0
-// let numSend=0
+// let timeSend=1000;
+// let t1 = new Date().getTime();
+// let count =0;
+// let numSend=0;
 transLoop.EachFunc = function (param,item,index) {
-    // count++
+    // count++;
     // for(;;){
     //     if (count<num){
-    //         break
+    //         break;
     //     }
-    //     var t2=new Date().getTime()
+    //     var t2=new Date().getTime();
     //     if (t2 - t1 >= timeSend) {
-    //         t1=t2
-    //         console.log("count",count)
-    //         count=0
-    //         console.log("t2",t2)
-    //         break
+    //         t1=t2;
+    //         console.log("count",count);
+    //         count=0;
+    //         console.log("t2",t2);
+    //         break;
     //     }
     // }
     web3.eth.sendRawTransaction(item,function (err,result) {

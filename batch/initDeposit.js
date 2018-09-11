@@ -3,7 +3,19 @@ const fs = require('fs');
 let ASyncLoopStack = require('./ASyncLoopStack.js');
 let sendMiner = JSON.parse(fs.readFileSync('../context/deposit/miner.json'));
 let sendValidator = JSON.parse(fs.readFileSync('../context/deposit/validator.json'));
-let sendList=sendMiner
+let sendList=sendMiner;
+var per = process.argv.splice(2);
+if( per && per.indexOf("miner")!=-1){
+    console.log("miner");
+    let deposit_send = JSON.parse(fs.readFileSync('../context/deposit/miner.json'));
+    if(deposit_send && deposit_send.deposit) sendList.deposit = deposit_send.deposit;
+}else{
+    console.log("validator");
+    let  deposit_send = JSON.parse(fs.readFileSync('../context/deposit/validator.json'));
+    sendList=deposit_send;
+    if(deposit_send && deposit_send.deposit) sendList.deposit = deposit_send.deposit;
+}
+/*
 if (!fs.existsSync('../context/deposit/miner.json') && !fs.existsSync('../context/deposit/validator.json')) {
     console.log("file does not exits");
     process.exit();
@@ -21,9 +33,8 @@ if (sendMTime - sendVTime > 0) {
     sendList=deposit_send;
     console.log("validator");
     if(deposit_send && deposit_send.deposit) sendList.deposit = deposit_send.deposit;
-
 }
-
+*/
 
 let manUtil = require('matrix-util');
 web3.man = new manUtil.web3Man(web3);

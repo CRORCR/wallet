@@ -145,10 +145,10 @@ function setParameter(txdata, extraList, tem) {
     temp.push(10);
     temp.push(0);
     temp.push(0);
-    var v = rlp.encode(temp);
-   console.log("0x" + v.toString('hex'));
+   // var v = rlp.encode(temp);
+  // console.log("0x" + v.toString('hex'));
 
-    console.log("send:", temp);
+  //  console.log("send:", temp);
     return ethUtil.rlphash(temp.slice(0,temp.length));
     // return ethUtil.rlphash(temp);
 }
